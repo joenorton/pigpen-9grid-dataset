@@ -5,15 +5,16 @@ TOP_HORIZ_LINE = (2, 2, 26, 4)
 BOT_HORIZ_LINE = (2, 24, 26, 26)
 LEFT_VERT_LINE = (2, 2, 4, 26)
 RIGHT_VERT_LINE = (24, 2, 26, 26)
+
 symbols = {
-    'top-right': [(2, 2, 4, 26), (2, 24, 26, 26)],
-    'top-left': [(24, 2, 26, 26), (2, 24, 26, 26)],
-    'bot-right': [(2, 2, 4, 24), (2, 2, 26, 4)],
-    'bot-left': [(24, 2, 26, 24), (2, 2, 24, 4)],
-    'top-u': [(2, 2, 4, 24), (24, 2, 26, 24), (4, 24, 24, 24)],
-    'bot-u': [(2, 2, 4, 24), (4, 2, 24, 4), (4, 24, 24, 24)],
-    'left-u': [(2, 4, 4, 26), (24, 4, 26, 26), (4, 2, 24, 4)],
-    'right-u': [(24, 4, 26, 24), (2, 4, 4, 24), (4, 24, 24, 26)],
+    'top-right': [LEFT_VERT_LINE, BOT_HORIZ_LINE],
+    'top-left': [RIGHT_VERT_LINE, BOT_HORIZ_LINE],
+    'bot-right': [LEFT_VERT_LINE, TOP_HORIZ_LINE],
+    'bot-left': [RIGHT_VERT_LINE, TOP_HORIZ_LINE],
+    'top-u': [LEFT_VERT_LINE, RIGHT_VERT_LINE, BOT_HORIZ_LINE],
+    'bot-u': [LEFT_VERT_LINE, RIGHT_VERT_LINE, TOP_HORIZ_LINE],
+    'left-u': [TOP_HORIZ_LINE, RIGHT_VERT_LINE, BOT_HORIZ_LINE],
+    'right-u': [TOP_HORIZ_LINE, LEFT_VERT_LINE, BOT_HORIZ_LINE],
     'square': [TOP_HORIZ_LINE, BOT_HORIZ_LINE, LEFT_VERT_LINE, RIGHT_VERT_LINE]
 }
 
