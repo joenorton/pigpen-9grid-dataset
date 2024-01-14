@@ -48,7 +48,7 @@ def generate_transformed_images(letters, base_dir, output_dir, scale_range, rota
 
     for letter in letters:
         # Load the base image for the letter
-        img_path = os.path.join(base_dir, f'{letter}/1.png')
+        img_path = os.path.join(base_dir, f'{letter}/{letter}.png')
         if not os.path.exists(img_path):
             continue
         img = Image.open(img_path)
@@ -62,22 +62,57 @@ def generate_transformed_images(letters, base_dir, output_dir, scale_range, rota
             img, scale_factor, rotation_angle, translation, noise_level, contrast_level, brightness_level)
 
         # Save the transformed image
-        output_path = os.path.join(output_dir, f'{letter}/1_{seed}.png')
+        output_path = os.path.join(output_dir, f'{letter}/{letter}_{seed}.png')
         transformed_img.save(output_path)
 
-#letters = os.listdir('letters')
-letters = ['A']
+letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA']
+#letters = ['A']
+
+#train params
+train_params = {
+    'scale_range': (0.6, 1.0),
+    'rotation_range': (-10, 10),
+    'translation_range': (-2, 2),
+    'noise_range': (0, 10),
+    'contrast_level': 1.5,
+    'brightness_level': 0.8
+}
+#test params - designed to exceed the training parameters in every way
+test_params = {
+    'scale_range': (0.4, 1.0),
+    'rotation_range': (-12, 12),
+    'translation_range': (-3, 3),
+    'noise_range': (0, 15),
+    'contrast_level': 0.8,
+    'brightness_level': 0.7
+}
+# gen train set
 num_samples_gen = range(1, 1000, 1)
 for each_num in num_samples_gen:
     generate_transformed_images(
         letters,
-        base_dir='letters',
-        output_dir='letters',
-        scale_range=(0.6, 1.1),
-        rotation_range=(-10, 10),
-        translation_range=(-2, 2),
-        noise_range=(0, 10),
-        contrast_level=1.5,  # Increase contrast
-        brightness_level=0.8,  # Decrease brightness
+        base_dir='train',
+        output_dir='train',
+        scale_range=train_params['scale_range'],
+        rotation_range=train_params['rotation_range'],
+        translation_range=train_params['translation_range'],
+        noise_range=train_params['noise_range'],
+        contrast_level=train_params['contrast_level'],
+        brightness_level=train_params['brightness_level'],
+        seed=each_num
+    )
+# gen test set
+num_test_samples_gen = range(1001, 1500, 1)
+for each_num in num_test_samples_gen:
+    generate_transformed_images(
+        letters,
+        base_dir='train',
+        output_dir='test',
+        scale_range=test_params['scale_range'],
+        rotation_range=test_params['rotation_range'],
+        translation_range=test_params['translation_range'],
+        noise_range=test_params['noise_range'],
+        contrast_level=test_params['contrast_level'],
+        brightness_level=test_params['brightness_level'],
         seed=each_num
     )

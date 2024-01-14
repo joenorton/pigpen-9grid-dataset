@@ -69,4 +69,4 @@ for letter, coordinates in letters.items():
         draw.ellipse(each_dot, fill='black')
 
     # Save the image
-    img.save(f'letters/{letter}/1.png')
+    img.save(f'train/{letter}/{letter}.png')
