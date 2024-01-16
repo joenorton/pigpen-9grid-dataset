@@ -48,7 +48,7 @@ def generate_transformed_images(letters, base_dir, output_dir, scale_range, rota
 
     for letter in letters:
         # Load the base image for the letter
-        img_path = os.path.join(base_dir, f'{letter}/{letter}.png')
+        img_path = os.path.join(base_dir, f'{letter}.png')
         if not os.path.exists(img_path):
             continue
         img = Image.open(img_path)
@@ -62,7 +62,7 @@ def generate_transformed_images(letters, base_dir, output_dir, scale_range, rota
             img, scale_factor, rotation_angle, translation, noise_level, contrast_level, brightness_level)
 
         # Save the transformed image
-        output_path = os.path.join(output_dir, f'{letter}/{letter}_{seed}.png')
+        output_path = os.path.join(output_dir, f'{letter}/{letter}_drawn_{seed}.png')
         transformed_img.save(output_path)
 
 letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA']
@@ -92,7 +92,7 @@ num_samples_gen = range(1, 1000, 1)
 for each_num in num_samples_gen:
     generate_transformed_images(
         letters,
-        base_dir='train',
+        base_dir='drawn',
         output_dir='train',
         scale_range=easy_params['scale_range'],
         rotation_range=easy_params['rotation_range'],
@@ -108,7 +108,7 @@ num_test_samples_gen = range(1001, 1251, 1)
 for each_num in num_test_samples_gen:
     generate_transformed_images(
         letters,
-        base_dir='train',
+        base_dir='drawn',
         output_dir='test',
         scale_range=adv_params['scale_range'],
         rotation_range=adv_params['rotation_range'],
@@ -124,7 +124,7 @@ num_valid_samples_gen = range(2001, 2251, 1)
 for each_num in num_valid_samples_gen:
     generate_transformed_images(
         letters,
-        base_dir='train',
+        base_dir='drawn',
         output_dir='validation',
         scale_range=adv_params['scale_range'],
         rotation_range=adv_params['rotation_range'],
