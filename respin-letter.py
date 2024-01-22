@@ -88,7 +88,7 @@ adv_params = {
 }
 
 # gen train set
-num_samples_gen = range(1, 1000, 1)
+num_samples_gen = range(1, 1001, 1)
 for each_num in num_samples_gen:
     generate_transformed_images(
         letters,
@@ -104,7 +104,7 @@ for each_num in num_samples_gen:
     )
 
 # gen test set
-num_test_samples_gen = range(1001, 1251, 1)
+num_test_samples_gen = range(1002, 1252, 1)
 for each_num in num_test_samples_gen:
     generate_transformed_images(
         letters,

@@ -79,7 +79,7 @@ easy_params = {
 }
 #test params - designed to exceed the training parameters in every way
 adv_params = {
-    'scale_range': (0.4, 1.0),
+    'scale_range': (0.6, 1.0),
     'rotation_range': (-12, 12),
     'translation_range': (-3, 3),
     'noise_range': (0, 15),
@@ -88,7 +88,7 @@ adv_params = {
 }
 
 # gen train set
-num_samples_gen = range(1, 1000, 1)
+num_samples_gen = range(1, 1001, 1)
 for each_num in num_samples_gen:
     generate_transformed_images(
         letters,
@@ -104,7 +104,7 @@ for each_num in num_samples_gen:
     )
 
 # gen test set
-num_test_samples_gen = range(1001, 1251, 1)
+num_test_samples_gen = range(1002, 1252, 1)
 for each_num in num_test_samples_gen:
     generate_transformed_images(
         letters,
