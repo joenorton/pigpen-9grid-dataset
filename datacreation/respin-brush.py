@@ -87,12 +87,14 @@ adv_params = {
     'brightness_level': 0.7
 }
 
+SOURCE_DIRECTORY = 'parent-sets/brush'
+
 # gen train set
-num_samples_gen = range(1, 1001, 1)
+num_samples_gen = range(6001, 6501, 1)
 for each_num in num_samples_gen:
     generate_transformed_images(
         letters,
-        base_dir='drawn',
+        base_dir=SOURCE_DIRECTORY,
         output_dir='train',
         scale_range=easy_params['scale_range'],
         rotation_range=easy_params['rotation_range'],
@@ -104,11 +106,11 @@ for each_num in num_samples_gen:
     )
 
 # gen test set
-num_test_samples_gen = range(1002, 1252, 1)
+num_test_samples_gen = range(7002, 7102, 1)
 for each_num in num_test_samples_gen:
     generate_transformed_images(
         letters,
-        base_dir='drawn',
+        base_dir=SOURCE_DIRECTORY,
         output_dir='test',
         scale_range=adv_params['scale_range'],
         rotation_range=adv_params['rotation_range'],
@@ -120,11 +122,11 @@ for each_num in num_test_samples_gen:
     )
 
 # gen valid. set
-num_valid_samples_gen = range(2001, 2251, 1)
+num_valid_samples_gen = range(8001, 8101, 1)
 for each_num in num_valid_samples_gen:
     generate_transformed_images(
         letters,
-        base_dir='drawn',
+        base_dir=SOURCE_DIRECTORY,
         output_dir='validation',
         scale_range=adv_params['scale_range'],
         rotation_range=adv_params['rotation_range'],
