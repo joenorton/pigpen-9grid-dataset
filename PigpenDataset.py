@@ -6,7 +6,7 @@ class PigpenDatasetClass(Dataset):
     def __init__(self, directory, transform=None):
         self.directory = directory
         self.transform = transform
-        self.classes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA']
+        self.classes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '-']
         self.images = []
         for cls in self.classes:
             cls_dir = os.path.join(directory, cls)
